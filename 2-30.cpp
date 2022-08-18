@@ -80,7 +80,7 @@ int getUnitMeasure(void) {
     int unitMeasure = 0; 
     cout << "Type 0 for meters/kilograms" << endl; 
     cout << "Type 1 for pounds/inches" << endl; 
-    cout << "Please select your unit of measurement (0 = mt/kg, 1 = lb/in)" << endl; 
+    cout << "Please select your unit of measurement (0 = mt/kg[SI], 1 = lb/in [IU])" << endl; 
     cin >> unitMeasure;
     return unitMeasure;
 }
