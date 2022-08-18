@@ -16,7 +16,8 @@ using namespace std;
 void printMenu(void);
 double getWeight(void);
 double getHeight(void);
-double getBMI(double, double); 
+double getBMI(double, double);
+
 // Constants
 const int POUNDS = 703;
 
