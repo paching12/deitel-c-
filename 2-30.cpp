@@ -12,8 +12,8 @@
 using namespace std;
 
 // Prototipos
-double getBMI(double, double, int);
-double getData(string);
+float getBMI(float, float, int);
+float getData(string);
 int getUnitMeasure(void);
 void printInfo(void);
 
@@ -28,9 +28,9 @@ const float OBESE_RANGE = 29.9;
 int main() {
 
     int unitMeasure = 0;
-    double weight = 0.0;
-    double height = 0.0;
-    double bmi = 0.0;
+    float weight = 0.0;
+    float height = 0.0;
+    float bmi = 0.0;
 
     // Print info
     printInfo();
@@ -46,9 +46,9 @@ int main() {
     cout << "BMI calculated = " << bmi << endl;
 
     // Choose the BMI related to the result
-    if( bmi <= UNDER_WEIGHT_RANGE ) 
+    if( bmi < UNDER_WEIGHT_RANGE ) 
         cout << "-> Under weight: " << "less 18.5" << endl;
-    if( bmi > UNDER_WEIGHT_RANGE && bmi <= NORMAL_WEIGHT_RANGE ) 
+    if( bmi >= UNDER_WEIGHT_RANGE && bmi <= NORMAL_WEIGHT_RANGE ) 
         cout << "-> Normal weight: " << "between 18.5 and 24.9" << endl;
     if( bmi > NORMAL_WEIGHT_RANGE && bmi <= OBESE_RANGE )
         cout << "-> Overweight:"  << "between 25 and 29.9" << endl;
@@ -59,17 +59,17 @@ int main() {
 }
 
 
-// This function gets double data from the input
-double getData(string message) {
-    double data = 0.0; 
+// This function gets float data from the input
+float getData(string message) {
+    float data = 0.0; 
     cout << message << endl; 
     cin >> data;
     return data;
 }
 
 // This function gets BMI with weight and hight
-double getBMI(double weight, double height, int unitMeasure) {
-    return (weight * (unitMeasure == UI ? (double) POUNDS * 1 : 1)) /  (height * height);
+float getBMI(float weight, float height, int unitMeasure) {
+    return (weight * (unitMeasure == UI ? (float) POUNDS * 1 : 1)) /  (height * height);
 }
 
 // getUnitMeasure retrieves type of unit of measure.
