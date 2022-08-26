@@ -13,14 +13,15 @@
 using namespace std;
 
 // Prototipos
-int getUnitMeasure(void);
-double getWeight(void);
-double getHeight(void);
 double getBMI(double, double, int);
-void printMenu(void);
+double getData(string);
+int getUnitMeasure(void);
+void printInfo(void);
 
 // Constants
 const int POUNDS = 703;
+const int SI = 0;
+const int UI = 1;
 
 int main() {
 
@@ -29,22 +30,46 @@ int main() {
     double height = 0.0;
 
     // Print info
-    printMenu();
+    printInfo();
 
     // Get type of measure
     unitMeasure = getUnitMeasure();
 
     // Get weight and height
-    weight = getWeight();
-    height = getHeight();
+    weight = getData("Insert your weight");
+    height = getData("Insert your height");
 
     cout << "BMI calculated = " << getBMI(weight, height, unitMeasure) << endl;
 
     return 0;
 }
 
+
+// This function gets double data from the input
+double getData(string message) {
+    double data = 0.0; 
+    cout << message << endl; 
+    cin >> data;
+    return data;
+}
+
+// This function gets BMI with weight and hight
+double getBMI(double weight, double height, int unitMeasure) {
+    return (weight * (unitMeasure == UI ? (double) POUNDS * 1 : 1)) /  (height * height);
+}
+
+// getUnitMeasure retrieves type of unit of measure.
+int getUnitMeasure(void) {
+    int unitMeasure = 0; 
+    cout << "Type 0 for meters/kilograms" << endl; 
+    cout << "Type 1 for pounds/inches" << endl; 
+    cout << "Please select your unit of measurement (0 = mt/kg[SI], 1 = lb/in [IS])" << endl; 
+    cin >> unitMeasure;
+    return unitMeasure;
+}
+
 // This function prints the current menu for measure BMI 
-void printMenu() {
+void printInfo() {
     cout << "****************************************" << endl;
     cout << "*             BMI VALUES               *" << endl;
     cout << "****************************************" << endl;
@@ -53,34 +78,4 @@ void printMenu() {
     cout << "Normal: " << "between 18.5 and 24.9" << endl;
     cout << "Overweight: " << "between 25 and 29.9" << endl;
     cout << "Obese: " << "30 or more" << endl << endl;
-}
-
-// This function gets weight from the keyboard
-double getWeight() {
-    double weight = 0.0; 
-    cout << "Insert your weight" << endl; 
-    cin >> weight;
-    return weight;
-}
-
-// This function gets height from the keyboard
-double getHeight() {
-    double height = 0.0; 
-    cout << "Insert your height" << endl; 
-    cin >> height;
-    return height;
-}
-
-// This function gets BMI with weight and hight
-double getBMI(double weight, double height, int unitMeasure) {
-    return (weight * (unitMeasure ? (double) POUNDS * 1 : 1)) /  (height * height);
-}
-
-int getUnitMeasure(void) {
-    int unitMeasure = 0; 
-    cout << "Type 0 for meters/kilograms" << endl; 
-    cout << "Type 1 for pounds/inches" << endl; 
-    cout << "Please select your unit of measurement (0 = mt/kg[SI], 1 = lb/in [IU])" << endl; 
-    cin >> unitMeasure;
-    return unitMeasure;
 }
