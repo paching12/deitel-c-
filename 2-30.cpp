@@ -23,7 +23,6 @@ const int SI = 0;
 const int UI = 1;
 const float UNDER_WEIGHT_RANGE = 18.5;
 const float NORMAL_WEIGHT_RANGE = 24.9;
-const float OVERWEIGHT_RANGE = 25;
 const float OBESE_RANGE = 29.9;
 
 int main() {
@@ -51,10 +50,10 @@ int main() {
         cout << "-> Under weight: " << "less 18.5" << endl;
     if( bmi > UNDER_WEIGHT_RANGE && bmi <= NORMAL_WEIGHT_RANGE ) 
         cout << "-> Normal weight: " << "between 18.5 and 24.9" << endl;
-    if( bmi > OVERWEIGHT_RANGE && bmi <= OBESE_RANGE )
+    if( bmi > NORMAL_WEIGHT_RANGE && bmi <= OBESE_RANGE )
         cout << "-> Overweight:"  << "between 25 and 29.9" << endl;
     if( bmi > OBESE_RANGE ) 
-        cout << "-> Obese:" <<  "30 or more" << endl;
+        cout << "-> Obese: " << "30 or more" << endl;
 
     return 0;
 }
